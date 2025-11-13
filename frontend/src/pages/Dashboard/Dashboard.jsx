@@ -180,6 +180,12 @@ export default function Dashboard() {
     playSound()
   }
 
+  const handleUrgencyChange = (reportId, newUrgency) => {
+    reportStorage.updateReportUrgency(reportId, newUrgency)
+    loadDashboardData()
+    playSound()
+  }
+
   const sendChat = () => {
     if (!selectedReportId || !chatInput.trim()) return
     playSound()
@@ -250,7 +256,6 @@ export default function Dashboard() {
           <button className="nav-btn" onClick={() => handleMenuClick('/chat-management')}>Chat</button>
           <button className="nav-btn" onClick={() => handleMenuClick('/laporkan')}>Laporkan</button>
           <button className="nav-btn" onClick={() => handleMenuClick('/edukasi')}>Edukasi</button>
-          <button className="nav-btn" onClick={() => handleMenuClick('/login')}>Logout</button>
         </nav>
       </header>
 
@@ -317,7 +322,16 @@ export default function Dashboard() {
                     <span className="qi-status" style={{ backgroundColor: getStatusColor(r.status) }}>
                       Status: {r.status}
                     </span>
-                    <span className="qi-urgency">Urgensi: {r.urgency}</span>
+                    <select 
+                      className="qi-urgency-select" 
+                      value={r.urgency} 
+                      onChange={(e) => handleUrgencyChange(r.id, e.target.value)}
+                      onClick={(e) => e.stopPropagation()} // Prevent triggering queue item click
+                      style={{ backgroundColor: r.urgency === 'Berbahaya' ? '#FF6B6B' : '#F2C94C', color: r.urgency === 'Berbahaya' ? '#fff' : '#000' }}
+                    >
+                      <option value="Sedang">Urgensi: Sedang</option>
+                      <option value="Berbahaya">Urgensi: Berbahaya</option>
+                    </select>
                   </div>
                 </button>
               ))}
@@ -330,8 +344,19 @@ export default function Dashboard() {
           <div className="chat-meta">
             <div>Kategori: <b>{selectedReport?.type || '-'}</b></div>
             <div>Lokasi: <b>{selectedReport?.details.where || '-'}</b></div>
-            <div>Waktu: <b>{selectedReport?.date || '-'}</b></div>
+            <div>Tanggal: <b>{selectedReport?.date || '-'}</b></div>
           </div>
+          
+          {/* Detail Cerita dari Response1 */}
+          {selectedReport && selectedReport.details.what && (
+            <div className="report-detail-section">
+              <h3 className="detail-title">Detail Cerita Pelapor:</h3>
+              <div className="detail-content">
+                {selectedReport.details.what}
+              </div>
+            </div>
+          )}
+          
           <div className="chat-card">
             {!selectedReport ? (
               <>

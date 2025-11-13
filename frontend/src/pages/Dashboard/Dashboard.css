@@ -101,6 +101,9 @@
 .qi-urgency {
   background:#fff; border:1px solid rgba(0,0,0,.08); padding:2px 8px; border-radius:999px;
 }
+.qi-urgency-select {
+  background:#fff; border:1px solid rgba(0,0,0,.08); padding:2px 8px; border-radius:999px; font-size:.9rem; color:#6B5544; outline:none; cursor:pointer;
+}
 
 /* ============== CHAT ADMIN ============== */
 .chat-admin {
@@ -112,6 +115,9 @@
 }
 .chat-title { margin-bottom:6px; }
 .chat-meta { display:flex; gap:20px; flex-wrap:wrap; color:#6B5544; font-size:.95rem; margin-bottom:10px; }
+.report-detail-section { margin-bottom: 10px; }
+.detail-title { color:#FF8C00; font-size:1rem; font-weight:700; margin-bottom:5px; }
+.detail-content { background:#FEFBF3; border:1px solid #EADCC6; border-radius:10px; padding:10px; color:#3E2723; font-size:.9rem; line-height:1.4; max-height:120px; overflow-y:auto; }
 .chat-card { background:#F9F6EC; border:1px solid #EADCC6; border-radius:14px; padding:12px; }
 
 .chat-banner {
@@ -137,7 +143,7 @@
 
 .bubble { max-width:75%; padding:8px 12px; border-radius:14px; box-shadow:0 1px 2px rgba(0,0,0,.06); }
 .bubble.system { background:#FFF1CC; color:#8A5800; }
-.bubble.pelapor { background:#ffffff; border:1px solid #EEE3CE; color:#3E2723; }
+.bubble.pelapor { background:#E3F2FD; border:1px solid #BBDEFB; color:#1565C0; }
 .bubble.admin { margin-left:auto; background:#FF8C00; color:#fff; }
 
 .chat-actions { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }

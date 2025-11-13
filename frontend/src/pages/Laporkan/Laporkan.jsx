@@ -40,14 +40,6 @@ function Laporkan() {
     }, 200);
   };
 
-  const handleFieldClick = (fieldId) => {
-    playSound();
-    sessionStorage.setItem('focusField', fieldId);
-    setTimeout(() => {
-      navigate('/jenisbullying');
-    }, 200);
-  };
-
   return (
     <div className="laporkan-page">
       {/* Header */}
@@ -90,22 +82,22 @@ function Laporkan() {
 
           {/* Field Buttons */}
           <div className="field-buttons">
-            <button className="field-btn field-what" onClick={() => handleFieldClick('what')}>
+            <div className="field-btn field-what">
               <span className="field-icon">⏰</span>
               <span className="field-text">Apa yang terjadi?</span>
-            </button>
-            <button className="field-btn field-when" onClick={() => handleFieldClick('when')}>
+            </div>
+            <div className="field-btn field-when">
               <span className="field-icon">📅</span>
               <span className="field-text">Kapan itu terjadi?</span>
-            </button>
-            <button className="field-btn field-who" onClick={() => handleFieldClick('who')}>
+            </div>
+            <div className="field-btn field-who">
               <span className="field-icon">😊</span>
               <span className="field-text">Siapa yang terlibat?</span>
-            </button>
-            <button className="field-btn field-where" onClick={() => handleFieldClick('where')}>
+            </div>
+            <div className="field-btn field-where">
               <span className="field-icon">🔒</span>
               <span className="field-text">Lokasi Kejadian</span>
-            </button>
+            </div>
           </div>
         </div>
       </div>

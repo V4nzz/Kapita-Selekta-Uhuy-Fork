@@ -49,6 +49,8 @@ function JenisBullying() {
         navigate('/response4');
       } else if (type === 'Aku dibully lewat HP / chat') {
         navigate('/response5');
+      } else if (type === 'Rahasiaku diceritain ke orang lain') {
+        navigate('/response6');
       } else {
         navigate('/laporkan/form');
       }
