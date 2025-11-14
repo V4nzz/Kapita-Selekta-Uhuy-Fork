@@ -35,23 +35,26 @@ function JenisBullying() {
 
   const handleTypeClick = (type) => {
     playSound();
+    console.log('Selected type:', type);
+    
     // Simpan jenis bullying yang dipilih
     sessionStorage.setItem('bullyingType', type);
+    
+    // Mapping type ke route
+    const routeMap = {
+      'Aku diejek teman': '/response1',
+      'Aku didorong / disakiti': '/response2',
+      'Aku dipanggil dengan kata yang bikin sedih': '/response3',
+      'Aku gak diajak main / belajar bareng': '/response4',
+      'Aku dibully lewat HP / chat': '/response5',
+      'Rahasiaku diceritain ke orang lain': '/response6'
+    };
+    
     // Navigate berdasarkan jenis bullying
     setTimeout(() => {
-      if (type === 'Aku diejek teman') {
-        navigate('/response1');
-      } else if (type === 'Aku didorong / disakiti') {
-        navigate('/response2');
-      } else if (type === 'Aku dipanggil dengan kata yang bikin sedih') {
-        navigate('/response3');
-      } else if (type === 'Aku gak diajak main / belajar bareng') {
-        navigate('/response4');
-      } else if (type === 'Aku dibully lewat HP / chat') {
-        navigate('/response5');
-      } else {
-        navigate('/laporkan/form');
-      }
+      const targetRoute = routeMap[type] || '/laporkan/form';
+      console.log('Navigating to:', targetRoute);
+      navigate(targetRoute);
     }, 200);
   };
 
