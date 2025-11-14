@@ -158,11 +158,11 @@
 
 .field-buttons {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 15px;
   justify-content: center;
   align-items: stretch;
-  max-width: 600px;
+  max-width: 1000px;
   margin-top: 20px;
 }
 
