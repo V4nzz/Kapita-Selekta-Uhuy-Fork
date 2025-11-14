@@ -73,8 +73,14 @@ export default function Dashboard() {
     // analitik
     const locMap = new Map()
     const catMap = new Map()
+    const predefinedLocations = ['Di Kelas', 'Di Lapangan', 'Di Kantin', 'Di HP / Chat']
+    
     all.forEach(r => {
-      const loc = (r.where || r.details?.where || 'Lainnya').trim()
+      let loc = (r.where || r.details?.where || 'Lainnya').trim()
+      // Jika lokasi bukan dari pilihan predefined, ubah menjadi "Lainnya"
+      if (loc && !predefinedLocations.includes(loc)) {
+        loc = 'Lainnya'
+      }
       const cat = (r.type || r.kategori || 'Lainnya').trim()
       locMap.set(loc, (locMap.get(loc) || 0) + 1)
       catMap.set(cat, (catMap.get(cat) || 0) + 1)
@@ -180,6 +186,12 @@ export default function Dashboard() {
     playSound()
   }
 
+  const handleUrgencyChange = (reportId, newUrgency) => {
+    reportStorage.updateReportUrgency(reportId, newUrgency)
+    loadDashboardData()
+    playSound()
+  }
+
   const sendChat = () => {
     if (!selectedReportId || !chatInput.trim()) return
     playSound()
@@ -247,10 +259,8 @@ export default function Dashboard() {
         </div>
         <nav className="header-nav">
           <button className="nav-btn nav-btn--admin" onClick={() => handleMenuClick('/dashboard')}>Admin</button>
-          <button className="nav-btn" onClick={() => handleMenuClick('/chat-management')}>Chat</button>
           <button className="nav-btn" onClick={() => handleMenuClick('/laporkan')}>Laporkan</button>
           <button className="nav-btn" onClick={() => handleMenuClick('/edukasi')}>Edukasi</button>
-          <button className="nav-btn" onClick={() => handleMenuClick('/login')}>Logout</button>
         </nav>
       </header>
 
@@ -317,7 +327,16 @@ export default function Dashboard() {
                     <span className="qi-status" style={{ backgroundColor: getStatusColor(r.status) }}>
                       Status: {r.status}
                     </span>
-                    <span className="qi-urgency">Urgensi: {r.urgency}</span>
+                    <select 
+                      className="qi-urgency-select" 
+                      value={r.urgency} 
+                      onChange={(e) => handleUrgencyChange(r.id, e.target.value)}
+                      onClick={(e) => e.stopPropagation()} // Prevent triggering queue item click
+                      style={{ backgroundColor: r.urgency === 'Berbahaya' ? '#FF6B6B' : '#F2C94C', color: r.urgency === 'Berbahaya' ? '#fff' : '#000' }}
+                    >
+                      <option value="Sedang">Urgensi: Sedang</option>
+                      <option value="Berbahaya">Urgensi: Berbahaya</option>
+                    </select>
                   </div>
                 </button>
               ))}
@@ -330,8 +349,19 @@ export default function Dashboard() {
           <div className="chat-meta">
             <div>Kategori: <b>{selectedReport?.type || '-'}</b></div>
             <div>Lokasi: <b>{selectedReport?.details.where || '-'}</b></div>
-            <div>Waktu: <b>{selectedReport?.date || '-'}</b></div>
+            <div>Tanggal: <b>{selectedReport?.date || '-'}</b></div>
           </div>
+          
+          {/* Detail Cerita dari Response1 */}
+          {selectedReport && selectedReport.details.what && (
+            <div className="report-detail-section">
+              <h3 className="detail-title">Detail Cerita Pelapor:</h3>
+              <div className="detail-content">
+                {selectedReport.details.what}
+              </div>
+            </div>
+          )}
+          
           <div className="chat-card">
             {!selectedReport ? (
               <>
@@ -372,7 +402,8 @@ export default function Dashboard() {
                         <Cell key={`loc-${i}`} fill={PIE_COLORS[i % PIE_COLORS.length]} />
                       ))}
                     </Pie>
-                    <Tooltip /><Legend />
+                    <Tooltip />
+                    <Legend wrapperStyle={{ display: 'flex', flexDirection: 'column', textAlign: 'left', paddingLeft: '8px' }} />
                   </PieChart>
                 </ResponsiveContainer>
               </div>
@@ -388,7 +419,8 @@ export default function Dashboard() {
                         <Cell key={`cat-${i}`} fill={PIE_COLORS[i % PIE_COLORS.length]} />
                       ))}
                     </Pie>
-                    <Tooltip /><Legend />
+                    <Tooltip />
+                    <Legend wrapperStyle={{ display: 'flex', flexDirection: 'column', textAlign: 'left', paddingLeft: '8px' }} />
                   </PieChart>
                 </ResponsiveContainer>
               </div>

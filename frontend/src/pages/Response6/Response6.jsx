@@ -84,6 +84,7 @@ function Response6() {
           <div className="story-card">
             <h2>Ceritain ke Nobi apa yang terjadi disini ya...</h2>
             
+            {/* Textarea untuk detail cerita */}
             <textarea
               className="story-textarea"
               placeholder="Tulis ceritamu di sini..."

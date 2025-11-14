@@ -43,6 +43,18 @@ export const reportStorage = {
     return updatedReports;
   },
 
+  // Mengupdate urgensi laporan
+  updateReportUrgency: (reportId, newUrgency) => {
+    const reports = reportStorage.getAllReports();
+    const updatedReports = reports.map(report => 
+      report.id === reportId 
+        ? { ...report, urgency: newUrgency }
+        : report
+    );
+    localStorage.setItem('bullyingReports', JSON.stringify(updatedReports));
+    return updatedReports;
+  },
+
   // Menghapus laporan
   deleteReport: (reportId) => {
     const reports = reportStorage.getAllReports();
