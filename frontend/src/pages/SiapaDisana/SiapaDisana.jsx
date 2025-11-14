@@ -125,7 +125,7 @@ function SiapaDisana() {
   return (
     <div className="siapa-disana-page">
       {/* Header */}
-      <div className="siapa-header">
+      <div className="page-header">
         <button className="back-button" onClick={handleBackClick}>
           <FiArrowLeft className="back-icon" />
           <span>BACK</span>

@@ -70,7 +70,7 @@ function JenisBullying() {
   return (
     <div className="jenis-bullying-page">
       {/* Header */}
-      <div className="jenis-header">
+      <div className="page-header">
         <button className="back-button" onClick={handleBackClick}>
           <FiArrowLeft className="back-icon" />
           <span>BACK</span>

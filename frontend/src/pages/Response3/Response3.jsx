@@ -54,7 +54,7 @@ function Response3() {
   return (
     <div className="response-page">
       {/* Header */}
-      <div className="response-header">
+      <div className="page-header">
         <button className="back-button" onClick={handleBackClick}>
           <FiArrowLeft className="back-icon" />
           <span>BACK</span>

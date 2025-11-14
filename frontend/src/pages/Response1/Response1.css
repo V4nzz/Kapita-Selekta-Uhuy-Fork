@@ -14,7 +14,7 @@
   margin: 0;
 }
 
-.response-header {
+.page-header {
   position: relative;
   display: flex;
   justify-content: center;
@@ -328,27 +328,8 @@
 }
 
 @media (max-width: 768px) {
-  .response-header {
+  .page-header {
     padding: 20px;
-  }
-  
-  .back-button {
-    top: 20px;
-    left: 20px;
-    padding: 10px 25px;
-    font-size: 0.9rem;
-    min-width: 100px;
-  }
-  
-  .header-title h1 {
-    font-size: 1.2rem;
-    padding: 12px 30px;
-  }
-  
-  .corner-logo {
-    top: 20px;
-    right: 20px;
-    width: 55px;
   }
   
   .speech-bubble {
@@ -375,30 +356,7 @@
 }
 
 @media (max-width: 480px) {
-  .response-header {
+  .page-header {
     padding: 15px;
-  }
-
-  .back-button {
-    top: 15px;
-    left: 15px;
-    padding: 8px 20px;
-    font-size: 0.8rem;
-    min-width: 90px;
-  }
-  
-  .back-button .back-icon {
-    font-size: 1rem;
-  }
-  
-  .header-title h1 {
-    font-size: 1rem;
-    padding: 10px 25px;
-  }
-  
-  .corner-logo {
-    top: 15px;
-    right: 15px;
-    width: 45px;
   }
 }

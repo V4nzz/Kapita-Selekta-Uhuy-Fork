@@ -43,7 +43,7 @@ function Laporkan() {
   return (
     <div className="laporkan-page">
       {/* Header */}
-      <div className="laporkan-header">
+      <div className="page-header">
         <button className="back-button" onClick={handleBackClick}>
           <FiArrowLeft className="back-icon" />
           <span>BACK</span>

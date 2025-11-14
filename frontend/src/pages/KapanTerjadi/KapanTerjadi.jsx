@@ -86,7 +86,7 @@ function KapanTerjadi() {
   return (
     <div className="kapan-terjadi-page">
       {/* Header */}
-      <div className="kapan-header">
+      <div className="page-header">
         <button className="back-button" onClick={handleBackClick}>
           <FiArrowLeft className="back-icon" />
           <span>BACK</span>
