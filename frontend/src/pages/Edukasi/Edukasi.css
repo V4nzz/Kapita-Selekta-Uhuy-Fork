@@ -8,6 +8,7 @@
 }
 
 /* Header */
+/* ... (Kode header Anda, tidak diubah) ... */
 .edukasi-header {
   display: flex;
   justify-content: space-between;
@@ -87,6 +88,7 @@
 }
 
 /* Main Content */
+/* ... (Kode Main Content Anda, tidak diubah) ... */
 .edukasi-content {
   flex: 1;
   display: flex;
@@ -143,6 +145,7 @@
 }
 
 /* Tentang Bullying Section */
+/* ... (Kode Tentang Bullying Anda, tidak diubah) ... */
 .tentang-bullying-section {
   background: white;
   padding: 80px 60px;
@@ -234,16 +237,53 @@
 .tentang-text:last-child {
   margin-bottom: 0;
 }
-
 /* Jenis-Jenis Bullying Section */
 .jenis-bullying-section {
-  background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%);
+  background: transparent; /* biarkan section tetap sesuai layout, warna utama di card */
   padding: 80px 60px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+}
+
+.jenis-bullying-section .bullying-card {
+  background-color: #F58E03 !important; /* warna orange yang diinginkan */
+  color: #ffffff; /* teks putih agar kontras */
+  background-image: none !important;
+  background-blend-mode: normal !important;
+  opacity: 1 !important;
+  position: relative;
+  z-index: 2;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Nonaktifkan overlay pseudo-elements yang menutupi card */
+.jenis-bullying-section::before,
+.jenis-bullying-section::after,
+.jenis-cards-container::before,
+.jenis-cards-container::after,
+.jenis-bullying-section .bullying-card::before,
+.jenis-bullying-section .bullying-card::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+}
+
+/* Sesuaikan teks agar terbaca di atas background orange */
+.jenis-bullying-section .bullying-card .card-title {
+  color: #ffffff !important;
+  text-align: center;
+}
+
+.jenis-bullying-section .bullying-card .card-text {
+  color: rgba(255,255,255,0.95) !important;
+  text-align: center;
+}
+
+/* hover style untuk card di atas background orange */
+.jenis-bullying-section .bullying-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.18);
 }
 
 .jenis-title {
@@ -264,22 +304,26 @@
 }
 
 .bullying-card {
-  background: white;
-  border-radius: 25px;
+  /* pastikan tidak transparan dan override background-image bila ada */
+  background-color: #F5F5DC;
+  background-image: none;
+  border-radius: 10px;
   padding: 30px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative; /* untuk menangani pseudo-element overlay */
+  z-index: 1;
 }
 
 .bullying-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px); /* <-- DIGANTI sedikit lebih kecil */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); /* <-- DIGANTI (hover shadow lebih lembut) */
 }
 
 .card-title {
   font-size: 1.6rem;
   font-weight: 800;
-  color: #ff6b35;
+  color: #F58E03; /* <-- DIGANTI ke warna orange terang */
   margin: 0 0 15px 0;
   text-align: center;
 }
@@ -287,13 +331,15 @@
 .card-text {
   font-size: 1rem;
   font-weight: 500;
-  color: #5d4037;
+  color: #4A2F18; /* <-- DIGANTI ke warna coklat gelap */
   line-height: 1.7;
   margin: 0;
   text-align: center;
 }
 
+
 /* Dampak Bullying Section */
+/* ... (Kode Dampak Bullying Anda, tidak diubah) ... */
 .dampak-bullying-section {
   background: white;
   padding: 80px 60px;
@@ -377,6 +423,7 @@
 }
 
 /* Pesan dari Cerita Section */
+/* ... (Kode Pesan Cerita Anda, tidak diubah) ... */
 .pesan-cerita-section {
   padding: 80px 60px 0;
   background: white;
@@ -494,6 +541,7 @@
 }
 
 /* Footer Section */
+/* ... (Kode Footer Anda, tidak diubah) ... */
 .footer-section {
   margin-top: 0;
   margin-left: calc(-100vw / 2 + 100% / 2);
@@ -561,7 +609,9 @@
   flex-shrink: 0;
 }
 
+
 /* Responsive Design */
+/* ... (Kode Responsive Anda, tidak diubah) ... */
 @media (max-width: 1024px) {
   .edukasi-content {
     padding: 40px 50px;
