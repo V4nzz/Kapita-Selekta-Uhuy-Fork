@@ -9,19 +9,19 @@ function MainMenu() {
 
   const playSound = () => {
     const audioContext = new (window.AudioContext || window.webkitAudioContext)()
-    
+
     const oscillator = audioContext.createOscillator()
     const gainNode = audioContext.createGain()
-    
+
     oscillator.connect(gainNode)
     gainNode.connect(audioContext.destination)
-    
+
     oscillator.frequency.value = 600
     oscillator.type = 'sine'
-    
+
     gainNode.gain.setValueAtTime(0.3, audioContext.currentTime)
     gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2)
-    
+
     oscillator.start(audioContext.currentTime)
     oscillator.stop(audioContext.currentTime + 0.2)
   }
@@ -42,7 +42,7 @@ function MainMenu() {
 
   return (
     <div className="main-menu-page">
-      {/* Header */}
+      {/* HEADER */}
       <div className="page-header">
         <button className="back-button" onClick={handleBackClick}>
           <FiArrowLeft className="back-icon" />
@@ -58,7 +58,7 @@ function MainMenu() {
         </div>
       </div>
 
-      {/* Welcome Bear Character */}
+      {/* WELCOME BEAR */}
       <div className="welcome-section">
         <div className="bear-welcome">
           <img src={bearImage} alt="Nobi Bear" className="bear-character-img" />
@@ -69,30 +69,30 @@ function MainMenu() {
         </div>
       </div>
 
-      {/* Menu Buttons */}
+      {/* MENU BUTTONS */}
       <div className="menu-buttons">
-        <button 
+        <button
           className="menu-btn menu-admin"
           onClick={() => handleMenuClick('/admin')}
         >
           Admin
         </button>
-        
+
         <button
           className="menu-btn menu-report"
           onClick={() => handleMenuClick('/laporkan')}
         >
           Laporkan
         </button>
-        
-        <button 
+
+        <button
           className="menu-btn menu-education"
           onClick={() => handleMenuClick('/edukasi')}
         >
           Edukasi
         </button>
-        
-        <button 
+
+        <button
           className="menu-btn menu-chat"
           onClick={() => handleMenuClick('/chat')}
         >

@@ -14,6 +14,78 @@
   padding: 0;
 }
 
+/* ================= HEADER ================= */
+
+.page-header {
+  position: relative;
+  padding: 24px 64px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Title di tengah */
+.header-title h1 {
+  background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%);
+  color: #fff;
+  padding: 12px 32px;
+  border-radius: 40px;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+/* BACK – krem & teks oranye */
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-radius: 999px;
+  border: 2px solid #F58E03;
+  background: #FFE2AA;
+  color: #F58E03;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+  position: absolute;
+  left: 32px;
+  top: 24px;
+}
+
+.back-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(245, 142, 3, 0.3);
+}
+
+.back-icon {
+  font-size: 1.1rem;
+}
+
+.back-button span {
+  font-size: 0.95rem;
+}
+
+/* Logo pojok kanan atas */
+.corner-logo {
+  position: absolute;
+  top: 20px;
+  right: 12px;    
+  width: 64px;
+}
+
+.corner-logo img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+}
+
+/* ================ WELCOME SECTION ================ */
+
 .welcome-section {
   display: flex;
   flex-direction: column;
@@ -93,6 +165,7 @@
   margin-bottom: 12px;
 }
 
+/* Animasi */
 @keyframes slideIn {
   0% {
     transform: translateY(-50px);
@@ -118,7 +191,8 @@
   }
 }
 
-/* Menu Buttons */
+/* ================= MENU BUTTONS ================= */
+
 .menu-buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -133,7 +207,6 @@
   background-color: #dadf74;
   border-radius: 0;
   box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
-  /* prevent button scaling issues during zoom */
   box-sizing: border-box;
 }
 
@@ -189,33 +262,33 @@
   }
 }
 
-/* Responsive Design */
+/* ================= RESPONSIVE ================= */
+
+/* Tablet / small laptop */
 @media (max-width: 1024px) {
   .header-title h1 {
-    font-size: 1.5rem;
-    padding: 12px 30px;
+    font-size: 1.3rem;
+    padding: 10px 28px;
   }
 
   .menu-buttons {
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    bottom: 0;
     padding: 20px 30px;
   }
 
   .menu-btn {
-    font-size: 1.5rem;
-    padding: 16px 35px;
+    font-size: 1.4rem;
+    padding: 14px 30px;
   }
 
   .welcome-section {
-    /* adjust transform for smaller screens */
     margin: 0px 0px 20px 40px;
     transform: translateY(60px);
   }
 
   .bear-character-img {
-    width: 350px;
+    width: 330px;
   }
 
   .welcome-bubble p {
@@ -223,48 +296,59 @@
   }
 }
 
+/* Mobile ≤ 768px */
 @media (max-width: 768px) {
-  .menu-header {
-    padding: 20px;
+  .page-header {
+    padding: 16px 16px 12px;
+    display: block;
+    position: relative;
   }
 
-  .back-button {
-    top: 20px;
-    left: 20px;
-    padding: 10px 25px;
-    font-size: 0.9rem;
-    min-width: 100px;
+  /* Logo tetap pojok kanan atas */
+  .main-menu-page .corner-logo {
+    position: absolute;
+    top: 16px;
+    right: 8px;
+    width: 50px;
+    z-index: 10;
   }
 
-  .back-icon {
-    font-size: 1.1rem;
-  }
-
-  .back-button span {
-    font-size: 0.9rem;
+  /* Title di atas, center */
+  .header-title {
+    text-align: center;
+    margin-bottom: 0;
   }
 
   .header-title h1 {
-    font-size: 1.2rem;
-    padding: 12px 30px;
+    font-size: 0.9rem;
+    padding: 10px 16px;
+    display: inline-block;
+    line-height: 1.3;
   }
 
-  .corner-logo {
-    top: 20px;
-    right: 20px;
-    width: 55px;
+  /* Back button di bawah title, KIRI, margin-top besar */
+  .back-button {
+    position: static;
+    padding: 8px 18px;
+    font-size: 0.8rem;
+    display: inline-flex;
+    margin: 0;
+    margin-top: 55px; /* TURUN LEBIH KE BAWAH */
+  }
+
+  .back-icon {
+    font-size: 0.95rem;
   }
 
   .welcome-section {
     flex-direction: column;
     margin: 20px auto;
     align-items: center;
-    /* reset transform for mobile */
     transform: translateY(0);
   }
 
   .bear-character-img {
-    width: 280px;
+    width: 260px;
   }
 
   .welcome-bubble {
@@ -276,53 +360,47 @@
   .welcome-bubble::before,
   .welcome-bubble::after {
     left: 50%;
-    top: -20px;
-    transform: translateX(-50%) rotate(90deg);
+    bottom: -18px;
   }
 
   .menu-buttons {
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
-    bottom: 0;
     padding: 18px 15px;
   }
 
   .menu-btn {
-    font-size: 1.2rem;
-    padding: 14px 20px;
+    font-size: 1.05rem;
+    padding: 12px 16px;
   }
 }
 
+/* Mobile kecil ≤ 480px */
 @media (max-width: 480px) {
-  .menu-header {
-    padding: 15px;
-  }
-
-  .back-button {
-    top: 15px;
-    left: 15px;
-    padding: 8px 20px;
-    font-size: 0.8rem;
-    min-width: 90px;
-  }
-
-  .back-icon {
-    font-size: 1rem;
-  }
-
-  .back-button span {
-    font-size: 0.8rem;
+  .page-header {
+    padding: 14px 12px 10px;
   }
 
   .header-title h1 {
-    font-size: 1rem;
-    padding: 10px 25px;
+    font-size: 0.75rem;
+    padding: 8px 14px;
+    letter-spacing: 0.3px;
   }
 
-  .corner-logo {
-    top: 15px;
-    right: 15px;
-    width: 45px;
+  .back-button {
+    padding: 6px 14px;
+    font-size: 0.75rem;
+    margin-top: 50px; /* TURUN LEBIH KE BAWAH */
+  }
+
+  .back-icon {
+    font-size: 0.85rem;
+  }
+
+  .main-menu-page .corner-logo {
+    top: 14px;
+    right: px;
+    width: 40px;
   }
 
   .bear-character-img {
@@ -330,22 +408,38 @@
   }
 
   .welcome-bubble p {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 
   .welcome-bubble p:first-child {
-    font-size: 1rem;
+    font-size: 1.05rem;
   }
 
   .menu-buttons {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    bottom: 0;
-    padding: 15px;
+    padding: 15px 12px;
   }
 
   .menu-btn {
-    font-size: 1rem;
-    padding: 12px 18px;
+    font-size: 0.95rem;
+    padding: 12px 16px;
+  }
+}
+
+/* Untuk layar sangat kecil */
+@media (max-width: 380px) {
+  .header-title h1 {
+    font-size: 0.7rem;
+    padding: 7px 14px;
+  }
+
+  .back-button {
+    padding: 6px 14px;
+    font-size: 0.75rem;
+  }
+
+  .main-menu-page .corner-logo {
+    width: 38px;
   }
 }
